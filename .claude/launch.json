@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mesara-gavrudin",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8080", "C:\\Users\\Nikola\\mesara-gavrudin"],
+      "port": 8080
+    }
+  ]
+}

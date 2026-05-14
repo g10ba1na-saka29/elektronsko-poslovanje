@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesara Gavrudin | Bijeljina — Od njive do sofre</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" width="52" height="57" aria-hidden="true">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#9B1E1E"/>
+            <stop offset="100%" style="stop-color:#6B1212"/>
+          </linearGradient>
+        </defs>
+        <path d="M50,4 L93,21 L93,64 Q93,87 50,104 Q7,87 7,64 L7,21 Z" fill="url(#shieldGrad)" stroke="#C4913A" stroke-width="2"/>
+        <path d="M50,11 L86,26 L86,64 Q86,83 50,97 Q14,83 14,64 L14,26 Z" fill="none" stroke="#C4913A" stroke-width="0.8" stroke-dasharray="2.5,2"/>
+        <!-- Cleaver blade -->
+        <rect x="26" y="42" width="30" height="18" rx="2.5" fill="#C4913A"/>
+        <rect x="26" y="39" width="30" height="5" rx="2" fill="#A07830"/>
+        <!-- Cleaver handle -->
+        <rect x="53" y="44" width="16" height="13" rx="5.5" fill="#7A4E2A"/>
+        <line x1="58" y1="44" x2="58" y2="57" stroke="#5C3A1E" stroke-width="1.5"/>
+        <line x1="63" y1="44" x2="63" y2="57" stroke="#5C3A1E" stroke-width="1.5"/>
+        <!-- Text MESARA -->
+        <text x="50" y="34" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="7.5" fill="#C4913A" letter-spacing="3" font-weight="bold">MESARA</text>
+        <!-- Text GAVRUDIN -->
+        <text x="50" y="77" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="9.5" fill="#F5DFA0" letter-spacing="0.5" font-weight="bold">GAVRUDIN</text>
+        <!-- Bottom tag -->
+        <text x="50" y="91" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#C4913A" letter-spacing="2">✦ BIJELJINA ✦</text>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-top">MESARA</span>
+        <strong class="logo-bottom">GAVRUDIN</strong>
+      </div>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#o-nama" class="nav-link">O nama</a>
+      <a href="#katalog" class="nav-link">Katalog</a>
+      <a href="#lokacija" class="nav-link">Lokacija</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="script-toggle" id="scriptToggle" title="Prebaci na ćirilicu" aria-label="Prebaci na ćirilicu">Ћир</button>
+      <button class="cart-btn" id="cartBtn" aria-label="Otvori korpu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="cart-badge" id="cartBadge" hidden>0</span>
+      </button>
+      <button class="menu-btn" id="menuBtn" aria-label="Meni" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">✦ Tradicija od 1995. ✦</p>
+    <h1 class="hero-title">Mesara<br><span>Gavrudin</span></h1>
+    <p class="hero-slogan">Od njive do sofre — svaki dan.</p>
+    <p class="hero-sub">Svježe meso, domaće kobasice i mliječni proizvodi direktno od lokalnih farmera Semberije.</p>
+    <div class="hero-cta">
+      <a href="#katalog" class="btn btn-gold">Pogledaj ponudu</a>
+      <a href="#o-nama" class="btn btn-outline-light">Naša priča</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- ========== O NAMA ========== -->
+<section class="section o-nama" id="o-nama">
+  <div class="container">
+    <div class="o-nama-grid">
+      <div class="o-nama-badge-col">
+        <div class="brand-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="220" height="220" aria-hidden="true">
+            <circle cx="100" cy="100" r="96" fill="#8B1A1A" stroke="#C4913A" stroke-width="3"/>
+            <circle cx="100" cy="100" r="86" fill="none" stroke="#C4913A" stroke-width="1" stroke-dasharray="4,3"/>
+            <text x="100" y="80" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#C4913A" letter-spacing="6" font-weight="bold">MESARA</text>
+            <text x="100" y="120" text-anchor="middle" font-family="Georgia,serif" font-size="26" fill="#F5DFA0" letter-spacing="1" font-weight="bold">GAVRUDIN</text>
+            <text x="100" y="148" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C4913A" letter-spacing="3">BIJELJINA</text>
+            <line x1="40" y1="128" x2="160" y2="128" stroke="#C4913A" stroke-width="0.8"/>
+            <line x1="40" y1="132" x2="160" y2="132" stroke="#C4913A" stroke-width="0.4"/>
+            <text x="100" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#C4913A" letter-spacing="2">✦ EST. 1995 ✦</text>
+          </svg>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-num">30+</span>
+            <span class="stat-label">godina iskustva</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">200+</span>
+            <span class="stat-label">kupaca dnevno</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">vrsta proizvoda</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">domaće i svježe</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="o-nama-text-col">
+        <span class="section-eyebrow">Naša priča</span>
+        <h2 class="section-title">Tri decenije<br><em>ukusa i povjerenja</em></h2>
+        <p>Mesara Gavrudin je porodično preduzeće koje je svoja vrata otvorilo <strong>1995. godine</strong> u srcu Bijeljine. Kroz više od tri decenije izgradili smo reputaciju zasnovanu na kvalitetu, svježini i tradiciji.</p>
+        <p>Naša ponuda uključuje svježe meso, domaće kobasice, mliječne prerađevine i još mnogo toga — sve direktno od lokalnih farmera Semberije koje poznajemo po imenu i prema njima se odnosimo sa poštovanjem.</p>
+        <p>Vjerujemo da hrana treba biti upravo onakva kakvu su naše majke i bake pravile — <em>bez kompromisa, bez vještačkih dodataka.</em> Svako jutro naše vage mjere svježe dostavljene proizvode, a naše ruke spretno pripremaju sve što je potrebno za vaš trpezni stol.</p>
+        <blockquote class="quote">
+          "Hrana s ljubavlju i tradicijom — dobrodošli u Mesaru Gavrudin, gdje ukus ima adresu."
+        </blockquote>
+        <div class="values-row">
+          <div class="value-item">
+            <span class="value-icon">🌿</span>
+            <span>Svježe svaki dan</span>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🤝</span>
+            <span>Lokalni farmeri</span>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">⭐</span>
+            <span>Provjeren kvalitet</span>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🚚</span>
+            <span>Dostava u Bijeljini</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== KATALOG ========== -->
+<section class="section katalog" id="katalog">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Naša ponuda</span>
+      <h2 class="section-title">Katalog <em>proizvoda</em></h2>
+      <p class="section-desc">Odaberite kategoriju i dodajte omiljene proizvode u korpu. Sve je svježe, sve je domaće.</p>
+    </div>
+
+    <div class="filter-tabs" id="filterTabs" role="tablist">
+      <button class="filter-tab active" data-cat="svi" role="tab" aria-selected="true">Svi</button>
+      <button class="filter-tab" data-cat="meso" role="tab" aria-selected="false">🥩 Crveno meso</button>
+      <button class="filter-tab" data-cat="perad" role="tab" aria-selected="false">🍗 Perad</button>
+      <button class="filter-tab" data-cat="kobasice" role="tab" aria-selected="false">🌭 Kobasice</button>
+      <button class="filter-tab" data-cat="mljecni" role="tab" aria-selected="false">🧀 Mliječni</button>
+    </div>
+
+    <div class="product-grid" id="productGrid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ========== LOKACIJA ========== -->
+<section class="section lokacija" id="lokacija">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Pronađite nas</span>
+      <h2 class="section-title">Lokacija <em>i kontakt</em></h2>
+    </div>
+
+    <div class="lokacija-grid">
+      <div class="lokacija-info">
+        <div class="contact-card">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <strong>Adresa</strong>
+              <p>Ulica Kralja Petra I Karađorđevića 14<br>76300 Bijeljina, BiH</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <strong>Radno vrijeme</strong>
+              <p>Pon–Pet: 07:00 – 19:00<br>Subota: 07:00 – 16:00<br><span class="closed">Nedjelja: zatvoreno</span></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <strong>Telefon</strong>
+              <p><a href="tel:+38755123456">+387 55 123-456</a><br><a href="tel:+38765123456">+387 65 123-456</a></p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <strong>E-mail</strong>
+              <p><a href="mailto:info@mesaragavrudin.ba">info@mesaragavrudin.ba</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="delivery-banner">
+          <span class="delivery-icon">🚚</span>
+          <div>
+            <strong>Besplatna dostava</strong>
+            <p>Za porudžbine iznad <strong>30 KM</strong> na cijelom području Bijeljine</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <iframe
+          title="Lokacija Mesare Gavrudin, Bijeljina"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=19.1950%2C44.7400%2C19.2450%2C44.7700&layer=mapnik&marker=44.7553%2C19.2152"
+          width="100%"
+          height="420"
+          style="border:0;border-radius:16px;"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+        <a class="map-link" href="https://www.openstreetmap.org/?mlat=44.7553&mlon=19.2152#map=15/44.7553/19.2152" target="_blank" rel="noopener">Otvori na karti ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="section faq-section" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Imate pitanja?</span>
+      <h2 class="section-title">Česta <em>pitanja</em></h2>
+      <p class="section-desc">Pronađite odgovore na najčešća pitanja naših kupaca. Ako ne nađete odgovor, slobodno nas nazovite.</p>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 110" width="44" height="48" aria-hidden="true">
+            <path d="M50,4 L93,21 L93,64 Q93,87 50,104 Q7,87 7,64 L7,21 Z" fill="#8B1A1A" stroke="#C4913A" stroke-width="2"/>
+            <path d="M50,11 L86,26 L86,64 Q86,83 50,97 Q14,83 14,64 L14,26 Z" fill="none" stroke="#C4913A" stroke-width="0.8" stroke-dasharray="2.5,2"/>
+            <rect x="26" y="42" width="30" height="18" rx="2.5" fill="#C4913A"/>
+            <rect x="26" y="39" width="30" height="5" rx="2" fill="#A07830"/>
+            <rect x="53" y="44" width="16" height="13" rx="5.5" fill="#7A4E2A"/>
+            <line x1="58" y1="44" x2="58" y2="57" stroke="#5C3A1E" stroke-width="1.5"/>
+            <line x1="63" y1="44" x2="63" y2="57" stroke="#5C3A1E" stroke-width="1.5"/>
+            <text x="50" y="34" text-anchor="middle" font-family="Georgia,serif" font-size="7.5" fill="#C4913A" letter-spacing="3" font-weight="bold">MESARA</text>
+            <text x="50" y="77" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#F5DFA0" letter-spacing="0.5" font-weight="bold">GAVRUDIN</text>
+            <text x="50" y="91" text-anchor="middle" font-family="Georgia,serif" font-size="5.5" fill="#C4913A" letter-spacing="2">✦ BIJELJINA ✦</text>
+          </svg>
+          <div class="logo-text">
+            <span class="logo-top">MESARA</span>
+            <strong class="logo-bottom">GAVRUDIN</strong>
+          </div>
+        </div>
+        <p class="footer-tagline">Od njive do sofre — svaki dan.</p>
+        <p class="footer-about">Tradicija ukusa od 1995. godine. Porodičan posao, lokalni farmeri, svježe svaki dan.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Brzi linkovi</h4>
+        <ul>
+          <li><a href="#o-nama">O nama</a></li>
+          <li><a href="#katalog">Katalog</a></li>
+          <li><a href="#lokacija">Lokacija</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Kategorije</h4>
+        <ul>
+          <li><a href="#katalog" data-filter="meso">Crveno meso</a></li>
+          <li><a href="#katalog" data-filter="perad">Perad</a></li>
+          <li><a href="#katalog" data-filter="kobasice">Kobasice</a></li>
+          <li><a href="#katalog" data-filter="mljecni">Mliječni proizvodi</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Kontakt</h4>
+        <p>📍 Kralja Petra I Karađorđevića 14<br>76300 Bijeljina, BiH</p>
+        <p>📞 <a href="tel:+38755123456">+387 55 123-456</a></p>
+        <p>✉️ <a href="mailto:info@mesaragavrudin.ba">info@mesaragavrudin.ba</a></p>
+        <p class="footer-hours">⏰ Pon–Pet: 07–19 | Sub: 07–16</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Mesara Gavrudin. Sva prava zadržana.</p>
+      <p class="footer-credit">Projekt izrađen za predmet <em>Elektronsko poslovanje</em></p>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== CART SIDEBAR ========== -->
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+<aside class="cart-sidebar" id="cartSidebar" aria-label="Korpa za kupovinu" aria-hidden="true">
+  <div class="cart-header">
+    <h3>Vaša korpa</h3>
+    <button class="cart-close" id="cartClose" aria-label="Zatvori korpu">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <span class="cart-empty-icon">🛒</span>
+      <p>Korpa je prazna</p>
+      <small>Dodajte proizvode iz kataloga</small>
+    </div>
+    <ul class="cart-items" id="cartItems"></ul>
+  </div>
+  <div class="cart-footer" id="cartFooter" hidden>
+    <div class="cart-total">
+      <span>Ukupno:</span>
+      <strong id="cartTotal">0.00 KM</strong>
+    </div>
+    <div class="cart-shipping-note">
+      <span id="shippingNote"></span>
+    </div>
+    <button class="btn btn-gold btn-block" id="checkoutBtn">Naruči ✦</button>
+    <button class="btn btn-ghost btn-block" id="clearCartBtn">Isprazni korpu</button>
+  </div>
+</aside>
+
+<!-- ========== TOAST ========== -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

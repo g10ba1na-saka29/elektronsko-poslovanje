@@ -1215,3 +1215,236 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* --- NOVI KOD ZA MODAL --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.checkout-modal {
+  background: var(--white);
+  width: 100%;
+  max-width: 450px;
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  animation: modalSlideUp 0.3s ease-out;
+}
+@keyframes modalSlideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+.checkout-form .form-group { margin-bottom: 20px; text-align: left; }
+.checkout-form label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--dark); }
+.checkout-form input, .checkout-form textarea {
+  width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-family: inherit;
+}
+.order-summary-mini {
+  display: flex; justify-content: space-between; padding: 16px 0; border-top: 1px dashed var(--border); margin: 20px 0; font-size: 1.1rem;
+}
+.btn-block { width: 100%; padding: 15px; background: var(--red); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer; font-weight: bold; }
+/* ===== CATALOG SEARCH ===== */
+.catalog-search-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.catalog-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+}
+
+.catalog-search-box svg {
+  position: absolute;
+  left: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.catalog-search-input {
+  width: 100%;
+  padding: 13px 44px 13px 46px;
+  border: 1.5px solid var(--border);
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--white);
+  color: var(--text);
+  transition: var(--transition);
+  appearance: none;
+}
+
+.catalog-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(196,145,58,0.12);
+}
+
+.catalog-search-input::placeholder { color: var(--text-muted); }
+
+/* hide browser's built-in clear button */
+.catalog-search-input::-webkit-search-cancel-button { display: none; }
+
+.catalog-search-clear {
+  position: absolute;
+  right: 14px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 4px 6px;
+  border-radius: 50%;
+  transition: var(--transition);
+  line-height: 1;
+}
+.catalog-search-clear:hover { background: var(--cream-dark); color: var(--red); }
+
+.product-count {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* No results state */
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--text-muted);
+}
+.no-results span { font-size: 3rem; display: block; margin-bottom: 16px; }
+.no-results p { font-size: 1.05rem; margin-bottom: 6px; }
+.no-results p strong { color: var(--red); }
+.no-results small { font-size: 0.88rem; }
+
+/* ===== PRODUCT BADGES ===== */
+.product-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.badge-popular {
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(139,26,26,0.35);
+}
+
+.badge-novo {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 2px 8px rgba(196,145,58,0.4);
+}
+
+/* make product-visual position:relative so badge positions inside */
+.product-visual { position: relative; }
+
+/* ===== CART SHIPPING PROGRESS BAR ===== */
+.shipping-progress-wrap {
+  margin-bottom: 4px;
+}
+
+.shipping-progress-bar {
+  height: 5px;
+  background: var(--cream-dark);
+  border-radius: 50px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.shipping-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--gold), var(--red));
+  border-radius: 50px;
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  max-width: 100%;
+}
+
+/* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 888;
+  border: 1.5px solid rgba(196,145,58,0.3);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.back-to-top:hover {
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-3px);
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #25D366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 888;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.5);
+}
+
+@media (max-width: 768px) {
+  .back-to-top { bottom: 92px; right: 16px; }
+  .whatsapp-float { bottom: 20px; right: 16px; }
+  .catalog-search-wrap { flex-direction: column; gap: 10px; }
+}

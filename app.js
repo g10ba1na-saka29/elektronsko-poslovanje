@@ -71,24 +71,24 @@ function applyScript(toCyr) {
 /* ===== DATA ===== */
 const PRODUCTS = [
   // Crveno meso
-  { id: 1,  name: "Goveđi odrezak",     cat: "meso",     emoji: "🥩", weight: "250g",  price: 12.90, desc: "Svježi goveđi odrezak prvog kvaliteta, idealan za roštilj" },
+  { id: 1,  badge: "Popularno", name: "Goveđi odrezak",     cat: "meso",     emoji: "🥩", weight: "250g",  price: 12.90, desc: "Svježi goveđi odrezak prvog kvaliteta, idealan za roštilj" },
   { id: 2,  name: "Janjeća plećka",     cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 18.50, desc: "Domaća janjeća plećka, mekana i ukusna, direktno sa farme" },
-  { id: 3,  name: "Teleće meso",        cat: "meso",     emoji: "🥩", weight: "500g",  price: 11.00, desc: "Mlado teleće meso delikatnog ukusa, bez kostiju" },
+  { id: 3,  badge: "Novo", name: "Teleće meso",        cat: "meso",     emoji: "🥩", weight: "500g",  price: 11.00, desc: "Mlado teleće meso delikatnog ukusa, bez kostiju" },
   { id: 4,  name: "Svinjski vrat",      cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 14.90, desc: "Svinjski vrat bez kosti, idealan za pečenje i roštilj" },
   { id: 5,  name: "Mljeveno meso",      cat: "meso",     emoji: "🫙", weight: "500g",  price: 8.90,  desc: "Mješano mljeveno goveđe i svinjsko meso za ćufte i sarmu" },
   // Perad
-  { id: 6,  name: "Pileća prsa",        cat: "perad",    emoji: "🍗", weight: "500g",  price: 7.50,  desc: "Svježa pileća prsa bez kostiju i kože, bogata proteinima" },
+  { id: 6,  badge: "Popularno", name: "Pileća prsa",        cat: "perad",    emoji: "🍗", weight: "500g",  price: 7.50,  desc: "Svježa pileća prsa bez kostiju i kože, bogata proteinima" },
   { id: 7,  name: "Cijela piletina",    cat: "perad",    emoji: "🐔", weight: "~1.2kg",price: 11.90, desc: "Domaća cijela piletina, svježe zaklana svakog dana" },
   { id: 8,  name: "Pileći batak",       cat: "perad",    emoji: "🍗", weight: "1 kg",  price: 7.90,  desc: "Sočan pileći batak sa kožicom, ukusan pečen ili u supi" },
   { id: 9,  name: "Ćureća prsa",        cat: "perad",    emoji: "🦃", weight: "500g",  price: 10.50, desc: "Nježna ćureća prsa, idealna za zdravu i dijetalnu ishranu" },
   // Kobasice
-  { id: 10, name: "Domaće kobasice",    cat: "kobasice", emoji: "🌭", weight: "1 kg",  price: 16.90, desc: "Tradicionalne domaće kobasice po staroj bosanskoj recepturi" },
+  { id: 10, badge: "Popularno", name: "Domaće kobasice",    cat: "kobasice", emoji: "🌭", weight: "1 kg",  price: 16.90, desc: "Tradicionalne domaće kobasice po staroj bosanskoj recepturi" },
   { id: 11, name: "Sudžuk",             cat: "kobasice", emoji: "🌭", weight: "250g",  price: 8.50,  desc: "Autentični bosanski sudžuk, začinjen i sušen po tradiciji" },
   { id: 12, name: "Pečenica",           cat: "kobasice", emoji: "🥓", weight: "500g",  price: 11.90, desc: "Dimljena svinjska pečenica, idealna za doručak ili večeru" },
   { id: 13, name: "Domaće hrenovke",    cat: "kobasice", emoji: "🌭", weight: "500g",  price: 7.90,  desc: "Hrenovke bez vještačkih aditiva i konzervansa" },
-  { id: 14, name: "Sremska kobasica",   cat: "kobasice", emoji: "🥩", weight: "500g",  price: 13.50, desc: "Začinjena sremska kobasica od kvalitetnog svinjskog mesa" },
+  { id: 14, badge: "Novo", name: "Sremska kobasica",   cat: "kobasice", emoji: "🥩", weight: "500g",  price: 13.50, desc: "Začinjena sremska kobasica od kvalitetnog svinjskog mesa" },
   // Mliječni
-  { id: 15, name: "Domaći sir",         cat: "mljecni",  emoji: "🧀", weight: "500g",  price: 9.90,  desc: "Svježi domaći bijeli sir, kremast i blag, od kravljeg mlijeka" },
+  { id: 15, badge: "Popularno", name: "Domaći sir",         cat: "mljecni",  emoji: "🧀", weight: "500g",  price: 9.90,  desc: "Svježi domaći bijeli sir, kremast i blag, od kravljeg mlijeka" },
   { id: 16, name: "Kajmak",             cat: "mljecni",  emoji: "🫙", weight: "250g",  price: 7.50,  desc: "Pravi domaći kajmak sa planine Majevice, punomasni" },
   { id: 17, name: "Pavlaka",            cat: "mljecni",  emoji: "🥛", weight: "400ml", price: 4.90,  desc: "Kisela pavlaka od domaćeg punomasnog mlijeka" },
   { id: 18, name: "Domaće maslo",       cat: "mljecni",  emoji: "🧈", weight: "250g",  price: 6.50,  desc: "Čisto domaće maslo zlatne boje, aromatično i prirodno" },
@@ -250,6 +250,8 @@ class Cart {
     const t = this.total();
     if (cyrillicMode) setTimeout(() => applyScript(true), 30);
     if (totalEl) totalEl.textContent = t.toFixed(2) + ' KM';
+    const fillEl = document.getElementById('shippingFill');
+    if (fillEl) fillEl.style.width = Math.min((t / 30) * 100, 100) + '%';
     if (shipEl) {
       if (t >= 30) {
         shipEl.innerHTML = '🎉 <strong style="color:var(--red)">Besplatna dostava</strong> uključena!';
@@ -286,17 +288,42 @@ function showToast(msg) {
 }
 
 /* ===== RENDER PRODUCTS ===== */
-function renderProducts(filterCat = 'svi') {
+let currentCat = 'svi';
+let currentSearch = '';
+
+function renderProducts(filterCat = 'svi', searchQuery = '') {
+  currentCat = filterCat;
+  currentSearch = searchQuery;
   const grid = document.getElementById('productGrid');
+  const countEl = document.getElementById('productCount');
   if (!grid) return;
 
-  const list = filterCat === 'svi'
+  let list = filterCat === 'svi'
     ? PRODUCTS
     : PRODUCTS.filter(p => p.cat === filterCat);
 
+  if (searchQuery.trim()) {
+    const q = searchQuery.trim().toLowerCase();
+    list = list.filter(p =>
+      p.name.toLowerCase().includes(q) ||
+      p.desc.toLowerCase().includes(q) ||
+      (CAT_LABELS[p.cat] || '').toLowerCase().includes(q)
+    );
+  }
+
+  if (countEl) countEl.textContent = list.length + ' ' + (list.length === 1 ? 'proizvod' : 'proizvoda');
+
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="no-results"><span>🔍</span><p>Nema rezultata za "<strong>${searchQuery}</strong>"</p><small>Pokušajte drugu pretragu ili odaberite kategoriju</small></div>`;
+    return;
+  }
+
   grid.innerHTML = list.map(p => `
     <article class="product-card fade-in" data-cat="${p.cat}">
-      <div class="product-visual cat-${p.cat}">${p.emoji}</div>
+      <div class="product-visual cat-${p.cat}">
+        ${p.badge ? `<span class="product-badge badge-${p.badge === 'Novo' ? 'novo' : 'popular'}">${p.badge}</span>` : ''}
+        ${p.emoji}
+      </div>
       <div class="product-body">
         <p class="product-cat-tag">${CAT_LABELS[p.cat] || p.cat}</p>
         <h3 class="product-name">${p.name}</h3>
@@ -418,7 +445,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     btn.classList.add('active');
     btn.setAttribute('aria-selected', 'true');
-    renderProducts(btn.dataset.cat);
+    const searchInput = document.getElementById('catalogSearch');
+    renderProducts(btn.dataset.cat, searchInput ? searchInput.value : '');
 
     const section = document.getElementById('katalog');
     if (section) {
@@ -426,6 +454,65 @@ document.addEventListener('DOMContentLoaded', () => {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   });
+
+  /* --- Catalog search --- */
+  const catalogSearch = document.getElementById('catalogSearch');
+  if (catalogSearch) {
+    let searchDebounce;
+    catalogSearch.addEventListener('input', () => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        renderProducts(currentCat, catalogSearch.value);
+      }, 220);
+    });
+    document.getElementById('catalogSearchClear')?.addEventListener('click', () => {
+      catalogSearch.value = '';
+      renderProducts(currentCat, '');
+      catalogSearch.focus();
+    });
+  }
+
+  /* --- Back to top --- */
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 500);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* --- Animated counters --- */
+  function animateCounter(el) {
+    const text = el.textContent;
+    const match = text.match(/^(\d+)/);
+    if (!match) return;
+    const target = parseInt(match[1]);
+    const suffix = text.slice(match[1].length);
+    let start = 0;
+    const duration = 1400;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const numEl = entry.target.querySelector('.stat-num');
+        if (numEl) animateCounter(numEl);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-card').forEach(el => counterObserver.observe(el));
 
   /* --- Add to cart --- */
   document.getElementById('productGrid').addEventListener('click', e => {
@@ -489,14 +576,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* --- Checkout --- */
+const checkoutOverlay = document.getElementById('checkoutOverlay');
+  const checkoutForm = document.getElementById('checkoutForm');
+  const finalAmountLabel = document.getElementById('finalAmount');
+
+  // Funkcija koja otvara modal umjesto alerta
   document.getElementById('checkoutBtn')?.addEventListener('click', () => {
-    const t = cart.total().toFixed(2);
-    alert(`Hvala na narudžbi! 🎉\n\nUkupno: ${t} KM\n\nKontaktiraćemo vas uskoro radi dostave.\n\n📞 +387 65 123-456`);
-    cart.clear();
-    closeCart();
-    showToast('🎉 Narudžba uspješno poslata!');
+    if (cart.items.length === 0) return;
+    
+    // Ispisujemo cijenu u modal
+    finalAmountLabel.textContent = `${cart.total().toFixed(2)} KM`;
+    
+    // Palimo modal i gasimo sidebar korpe
+    checkoutOverlay.classList.add('active');
+    closeCart(); 
   });
 
+  // Zatvaranje modala na X
+  document.getElementById('checkoutClose')?.addEventListener('click', () => {
+    checkoutOverlay.classList.remove('active');
+  });
+
+  // Šta se dešava kad klikneš "Potvrdi narudžbu" u formi
+  checkoutForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(checkoutForm);
+    const imeKupca = formData.get('name');
+
+    showToast('⏳ Slanje narudžbe...');
+    
+    setTimeout(() => {
+      checkoutOverlay.classList.remove('active');
+      cart.clear(); // Brišemo korpu
+      checkoutForm.reset(); // Čistimo polja u formi
+      showToast('🎉 Hvala, ' + imeKupca + '! Narudžba je primljena.');
+    }, 1500);
+  });
   /* --- Footer category links --- */
   document.querySelectorAll('[data-filter]').forEach(a => {
     a.addEventListener('click', e => {

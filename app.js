@@ -72,13 +72,13 @@ function applyScript(toCyr) {
   }
 }
 
-/* ===== DATA ===== */
+/* ===== DATA ===== */ //600x400 rezoluc
 const PRODUCTS = [
   // Crveno meso
   { id: 1,  badge: "Popularno", name: "Goveđi odrezak",     cat: "meso",     emoji: "🥩", weight: "250g",  price: 12.90, desc: "Svježi goveđi odrezak prvog kvaliteta, idealan za roštilj" },
   { id: 2,  name: "Janjeća plećka",     cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 18.50, desc: "Domaća janjeća plećka, mekana i ukusna, direktno sa farme" },
   { id: 3,  badge: "Novo", name: "Teleće meso",        cat: "meso",     emoji: "🥩", weight: "500g",  price: 11.00, desc: "Mlado teleće meso delikatnog ukusa, bez kostiju" },
-  { id: 4,  name: "Svinjski vrat",      cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 14.90, desc: "Svinjski vrat bez kosti, idealan za pečenje i roštilj" },
+  { id: 4,  name: "Svinjski vrat", img: "images/svinjski_vrat.webp",     cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 14.90, desc: "Svinjski vrat bez kosti, idealan za pečenje i roštilj" },
   { id: 5,  name: "Mljeveno meso",      cat: "meso",     emoji: "🫙", weight: "500g",  price: 8.90,  desc: "Miješano mljeveno goveđe i svinjsko meso za ćufte i sarmu" },
   
   // Živina
@@ -328,7 +328,10 @@ function renderProducts(filterCat = 'svi', searchQuery = '') {
     <article class="product-card fade-in" data-cat="${p.cat}">
       <div class="product-visual cat-${p.cat}">
         ${p.badge ? `<span class="product-badge badge-${p.badge === 'Novo' ? 'novo' : 'popular'}">${p.badge}</span>` : ''}
-        ${p.emoji}
+                ${p.img
+          ? `<img src="${p.img}" alt="${p.name}" class="product-img" loading="lazy">`
+          : `<span class="product-emoji">${p.emoji}</span>`}
+      </div>
       </div>
       <div class="product-body">
         <p class="product-cat-tag">${CAT_LABELS[p.cat] || p.cat}</p>

@@ -79,10 +79,9 @@ const PRODUCTS = [
   { id: 2,  name: "Janjeća plećka",     cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 18.50, desc: "Domaća janjeća plećka, mekana i ukusna, direktno sa farme" },
   { id: 3,  badge: "Novo", name: "Teleće meso",        cat: "meso",     emoji: "🥩", weight: "500g",  price: 11.00, desc: "Mlado teleće meso delikatnog ukusa, bez kostiju" },
   { id: 4,  name: "Svinjski vrat",      cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 14.90, desc: "Svinjski vrat bez kosti, idealan za pečenje i roštilj" },
-  { id: 5,  name: "Mljeveno meso",      cat: "meso",     emoji: "🫙", weight: "500g",  price: 8.90,  desc: "Mješano mljeveno goveđe i svinjsko meso za ćufte i sarmu" },
+  { id: 5,  name: "Mljeveno meso",      cat: "meso",     emoji: "🫙", weight: "500g",  price: 8.90,  desc: "Miješano mljeveno goveđe i svinjsko meso za ćufte i sarmu" },
+  
   // Živina
-
-
   { id: 6,  name: "Pileća prsa",        cat: "živina",    emoji: "🍗", weight: "500g",  price: 7.50,  desc: "Svježa pileća prsa bez kostiju i kože, bogata proteinima" },
   { id: 7,  name: "Cijela piletina",    cat: "živina",    emoji: "🐔", weight: "~1.2kg",price: 11.90, desc: "Domaća cijela piletina, svježe zaklana svakog dana" },
   { id: 8,  name: "Pileći batak",       cat: "živina",    emoji: "🍗", weight: "1 kg",  price: 7.90,  desc: "Sočan pileći batak sa kožicom, ukusan pečen ili u supi" },
@@ -92,26 +91,26 @@ const PRODUCTS = [
   { id: 10, badge: "Popularno", name: "Domaće kobasice",    cat: "kobasice", emoji: "🌭", weight: "1 kg",  price: 16.90, desc: "Tradicionalne domaće kobasice po staroj bosanskoj recepturi" },
   { id: 11, name: "Sudžuk",             cat: "kobasice", emoji: "🌭", weight: "250g",  price: 8.50,  desc: "Autentični bosanski sudžuk, začinjen i sušen po tradiciji" },
   { id: 12, name: "Pečenica",           cat: "kobasice", emoji: "🥓", weight: "500g",  price: 11.90, desc: "Dimljena svinjska pečenica, idealna za doručak ili večeru" },
-  { id: 13, name: "Domaće hrenovke",    cat: "kobasice", emoji: "🌭", weight: "500g",  price: 7.90,  desc: "Hrenovke bez vještačkih aditiva i konzervansa" },
+  { id: 13, name: "Domaće viršle",       cat: "kobasice", emoji: "🌭", weight: "500g",  price: 7.90,  desc: "Viršle bez vještačkih aditiva i konzervansa" },
   { id: 14, badge: "Novo", name: "Sremska kobasica",   cat: "kobasice", emoji: "🥩", weight: "500g",  price: 13.50, desc: "Začinjena sremska kobasica od kvalitetnog svinjskog mesa" },
   // Mliječni
-  { id: 15, badge: "Popularno", name: "Domaći sir",         cat: "mljecni",  emoji: "🧀", weight: "500g",  price: 9.90,  desc: "Svježi domaći bijeli sir, kremast i blag, od kravljeg mlijeka" },
-  { id: 16, name: "Kajmak",             cat: "mljecni",  emoji: "🫙", weight: "250g",  price: 7.50,  desc: "Pravi domaći kajmak sa planine Majevice, punomasni" },
-  { id: 17, name: "Pavlaka",            cat: "mljecni",  emoji: "🥛", weight: "400ml", price: 4.90,  desc: "Kisela pavlaka od domaćeg punomasnog mlijeka" },
-  { id: 18, name: "Domaće maslo",       cat: "mljecni",  emoji: "🧈", weight: "250g",  price: 6.50,  desc: "Čisto domaće maslo zlatne boje, aromatično i prirodno" },
+  { id: 15, badge: "Popularno", name: "Domaći sir",         cat: "mliječni",  emoji: "🧀", weight: "500g",  price: 9.90,  desc: "Svježi domaći bijeli sir, kremast i blag, od kravljeg mlijeka" },
+  { id: 16, name: "Kajmak",             cat: "mliječni",  emoji: "🫙", weight: "250g",  price: 7.50,  desc: "Pravi domaći kajmak sa planine Majevice, punomasni" },
+  { id: 17, name: "Pavlaka",            cat: "mliječni",  emoji: "🥛", weight: "400ml", price: 4.90,  desc: "Kisela pavlaka od domaćeg punomasnog mlijeka" },
+  { id: 18, name: "Domaće maslo",       cat: "mliječni",  emoji: "🧈", weight: "250g",  price: 6.50,  desc: "Čisto domaće maslo zlatne boje, aromatično i prirodno" },
 ];
 
 const CAT_LABELS = {
   meso:     "Crveno meso",
   živina:    "Živina",
   kobasice: "Kobasice",
-  mljecni:  "Mliječni",
+  mliječni:  "Mliječni",
 };
 
 const FAQS = [
   {
     q: "Da li vršite dostavu kući?",
-    a: "Da! Vršimo besplatnu dostavu na cijelo područje Bijeljine za narudžbe iznad 30 KM. Za narudžbe ispod tog iznosa, naknada za dostavu iznosi 3 KM. Narudžbe primamo telefonom na broj +387 65 123-456 radnim danima do 17:00."
+    a: "Da! Vršimo besplatnu dostavu na cijelo područje Bijeljine za porudžbine iznad 30 KM. Za porudžbine ispod tog iznosa, naknada za dostavu iznosi 3 KM. Porudžbine primamo telefonom na broj +387 65 123-456 radnim danima do 17:00."
   },
   {
     q: "Koje je vaše radno vrijeme?",
@@ -122,8 +121,8 @@ const FAQS = [
     a: "Apsolutno! Naši pouzdani dobavljači sa lokalnih farmi Semberije dostavljaju svježe meso svako jutro između 6 i 7 sati. Garantujemo da je sve što prodajemo isporučeno istog dana — nikad zamrznuto."
   },
   {
-    q: "Mogu li naručiti veće količine za slave i proslave?",
-    a: "Naravno! Za narudžbe veće od 10 kg ili za specijalne prilike poput slava, svadbi i roštilj-proslava, kontaktirajte nas najmanje 48 sati unaprijed. Nudimo poseban popust za veće narudžbe i možemo pripremiti meso po vašim željama."
+    q: "Mogu li poručiti veće količine za slave i proslave?",
+    a: "Naravno! Za porudžbine veće od 10 kg ili za specijalne prilike poput slava, svadbi i roštilj-proslava, kontaktirajte nas najmanje 48 sati unaprijed. Nudimo poseban popust za veće porudžbine i možemo pripremiti meso po vašim željama."
   },
   {
     q: "Da li prodajete organsko i domaće uzgojene proizvode?",
@@ -134,8 +133,8 @@ const FAQS = [
     a: "Svježe meso čuvajte u frižideru na temperaturi između 0°C i 4°C i potrošite ga unutar 2–3 dana od kupovine. Za duže čuvanje, zamrznite odmah nakon kupovine na -18°C. Meso nikad ne odmrzavajte na sobnoj temperaturi — uvijek koristite frižider ili hladnu vodu."
   },
   {
-    q: "Da li primate rezervacije i posebne narudžbe?",
-    a: "Da! Možete rezervisati određene komade ili naručiti specifične dijelove koji nisu uvijek dostupni (npr. goveđi T-bone, janjeća rebra, cijelo janje). Pozovite nas dan ranije i potrudićemo se ispuniti vaš zahtjev bez doplata."
+    q: "Da li primate rezervacije i posebne porudžbine?",
+    a: "Da! Možete rezervisati određene komade ili poručiti specifične dijelove koji nisu uvijek dostupni (npr. goveđi T-bone, janjeća rebra, cijelo janje). Pozovite nas dan ranije i potrudićemo se ispuniti vaš zahtjev bez doplata."
   },
 ];
 
@@ -629,19 +628,19 @@ const checkoutOverlay = document.getElementById('checkoutOverlay');
     checkoutOverlay.classList.remove('active');
   });
 
-  // Šta se dešava kad klikneš "Potvrdi narudžbu" u formi
+  // Šta se dešava kad klikneš "Potvrdi porudžbinu" u formi
   checkoutForm?.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(checkoutForm);
     const imeKupca = formData.get('name');
 
-    showToast('⏳ Slanje narudžbe...');
+    showToast('⏳ Slanje porudžbine...');
     
     setTimeout(() => {
       checkoutOverlay.classList.remove('active');
       cart.clear(); // Brišemo korpu
       checkoutForm.reset(); // Čistimo polja u formi
-      showToast('🎉 Hvala, ' + imeKupca + '! Narudžba je primljena.');
+      showToast('🎉 Hvala, ' + imeKupca + '! Porudžbina je primljena.');
     }, 1500);
   });
   /* --- Footer category links --- */

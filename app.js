@@ -21,10 +21,14 @@ const LAT_CYR = [
   ['V','В'],['v','в'],['Z','З'],['z','з'],
 ];
 
+const LATIN_PRESERVE = /\bFAQ\b/g;
+
 function toCyrillic(str) {
-  let s = str;
+  // Zaštiti internacionalne kratice koje ostaju u latinici
+  const kept = [];
+  let s = str.replace(LATIN_PRESERVE, m => { kept.push(m); return `\x01${kept.length - 1}\x01`; });
   for (const [l, c] of LAT_CYR) s = s.replaceAll(l, c);
-  return s;
+  return s.replace(/\x01(\d+)\x01/g, (_, i) => kept[+i]);
 }
 
 let cyrillicMode = false;
@@ -76,11 +80,14 @@ const PRODUCTS = [
   { id: 3,  badge: "Novo", name: "Teleće meso",        cat: "meso",     emoji: "🥩", weight: "500g",  price: 11.00, desc: "Mlado teleće meso delikatnog ukusa, bez kostiju" },
   { id: 4,  name: "Svinjski vrat",      cat: "meso",     emoji: "🍖", weight: "1 kg",  price: 14.90, desc: "Svinjski vrat bez kosti, idealan za pečenje i roštilj" },
   { id: 5,  name: "Mljeveno meso",      cat: "meso",     emoji: "🫙", weight: "500g",  price: 8.90,  desc: "Mješano mljeveno goveđe i svinjsko meso za ćufte i sarmu" },
-  // Perad
-  { id: 6,  badge: "Popularno", name: "Pileća prsa",        cat: "perad",    emoji: "🍗", weight: "500g",  price: 7.50,  desc: "Svježa pileća prsa bez kostiju i kože, bogata proteinima" },
-  { id: 7,  name: "Cijela piletina",    cat: "perad",    emoji: "🐔", weight: "~1.2kg",price: 11.90, desc: "Domaća cijela piletina, svježe zaklana svakog dana" },
-  { id: 8,  name: "Pileći batak",       cat: "perad",    emoji: "🍗", weight: "1 kg",  price: 7.90,  desc: "Sočan pileći batak sa kožicom, ukusan pečen ili u supi" },
-  { id: 9,  name: "Ćureća prsa",        cat: "perad",    emoji: "🦃", weight: "500g",  price: 10.50, desc: "Nježna ćureća prsa, idealna za zdravu i dijetalnu ishranu" },
+  // Živina
+
+
+  { id: 6,  name: "Pileća prsa",        cat: "živina",    emoji: "🍗", weight: "500g",  price: 7.50,  desc: "Svježa pileća prsa bez kostiju i kože, bogata proteinima" },
+  { id: 7,  name: "Cijela piletina",    cat: "živina",    emoji: "🐔", weight: "~1.2kg",price: 11.90, desc: "Domaća cijela piletina, svježe zaklana svakog dana" },
+  { id: 8,  name: "Pileći batak",       cat: "živina",    emoji: "🍗", weight: "1 kg",  price: 7.90,  desc: "Sočan pileći batak sa kožicom, ukusan pečen ili u supi" },
+  { id: 9,  name: "Ćureća prsa",        cat: "živina",    emoji: "🦃", weight: "500g",  price: 10.50, desc: "Nježna ćureća prsa, idealna za zdravu i dijetalnu ishranu" },
+
   // Kobasice
   { id: 10, badge: "Popularno", name: "Domaće kobasice",    cat: "kobasice", emoji: "🌭", weight: "1 kg",  price: 16.90, desc: "Tradicionalne domaće kobasice po staroj bosanskoj recepturi" },
   { id: 11, name: "Sudžuk",             cat: "kobasice", emoji: "🌭", weight: "250g",  price: 8.50,  desc: "Autentični bosanski sudžuk, začinjen i sušen po tradiciji" },
@@ -96,7 +103,7 @@ const PRODUCTS = [
 
 const CAT_LABELS = {
   meso:     "Crveno meso",
-  perad:    "Perad",
+  živina:    "Živina",
   kobasice: "Kobasice",
   mljecni:  "Mliječni",
 };
@@ -107,7 +114,7 @@ const FAQS = [
     a: "Da! Vršimo besplatnu dostavu na cijelo područje Bijeljine za narudžbe iznad 30 KM. Za narudžbe ispod tog iznosa, naknada za dostavu iznosi 3 KM. Narudžbe primamo telefonom na broj +387 65 123-456 radnim danima do 17:00."
   },
   {
-    q: "Koje su vaše radne sate?",
+    q: "Koje je vaše radno vrijeme?",
     a: "Radimo svakim danom osim nedjelje. Ponedjeljak do petka: 07:00–19:00, subota: 07:00–16:00. Nedjeljom i državnim praznicima ne radimo."
   },
   {
@@ -421,18 +428,27 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --- Mobile menu --- */
   const menuBtn = document.getElementById('menuBtn');
   const nav = document.getElementById('nav');
-  menuBtn.addEventListener('click', () => {
+
+  const closeNav = () => {
+    nav.classList.remove('open');
+    menuBtn.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  menuBtn.addEventListener('click', e => {
+    e.stopPropagation();
     const open = nav.classList.toggle('open');
     menuBtn.classList.toggle('open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
   });
 
-  nav.querySelectorAll('.nav-link').forEach(a => {
-    a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      menuBtn.classList.remove('open');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
+  nav.querySelectorAll('.nav-link').forEach(a => a.addEventListener('click', closeNav));
+
+  /* Bug #4 fix — klik izvan menija zatvara ga */
+  document.addEventListener('click', e => {
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
+      closeNav();
+    }
   });
 
   /* --- Product filter --- */
@@ -536,21 +552,37 @@ document.addEventListener('DOMContentLoaded', () => {
     sidebar.classList.add('open');
     overlay.classList.add('active');
     sidebar.setAttribute('aria-hidden', 'false');
+    sidebar.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    document.getElementById('cartClose').focus();
   };
 
   const closeCart = () => {
     sidebar.classList.remove('open');
     overlay.classList.remove('active');
     sidebar.setAttribute('aria-hidden', 'true');
+    sidebar.removeAttribute('aria-modal');
     overlay.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    document.getElementById('cartBtn').focus();
   };
 
   document.getElementById('cartBtn').addEventListener('click', openCart);
   document.getElementById('cartClose').addEventListener('click', closeCart);
   overlay.addEventListener('click', closeCart);
+
+  /* Bug #2 fix — Escape zatvara korpu i mobilni meni */
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (sidebar.classList.contains('open')) closeCart();
+    if (nav.classList.contains('open')) closeNav();
+  });
+
+  /* Bug #3 fix — resize na desktop zatvara mobilni meni */
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && nav.classList.contains('open')) closeNav();
+  }, { passive: true });
 
   /* --- Cart item controls --- */
   document.getElementById('cartItems').addEventListener('click', e => {

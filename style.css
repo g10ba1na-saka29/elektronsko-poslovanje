@@ -1,6 +1,9 @@
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Fix: CSS display rules override [hidden] attribute in UA stylesheet */
+[hidden] { display: none !important; }
+
 :root {
   --red:          #8B1A1A;
   --red-dark:     #6B1212;
